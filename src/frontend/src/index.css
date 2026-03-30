@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+    /* Navy header: #0F1F34 */
+    --header-bg: 0.18 0.04 245;
+    /* Primary blue: #2563EB */
+    --primary: 0.52 0.22 263;
+    --primary-foreground: 0.99 0 0;
+    /* Page background: #F6F8FB */
+    --background: 0.975 0.005 245;
+    --foreground: 0.17 0.01 265;
+    /* Cards: white */
+    --card: 1 0 0;
+    --card-foreground: 0.17 0.01 265;
+    --popover: 1 0 0;
+    --popover-foreground: 0.17 0.01 265;
+    /* Borders: #E6EAF0 */
+    --border: 0.92 0.01 245;
+    --input: 0.92 0.01 245;
+    --ring: 0.52 0.22 263;
+    /* Muted */
+    --muted: 0.96 0.005 245;
+    --muted-foreground: 0.52 0.01 265;
+    /* Secondary */
+    --secondary: 0.95 0.01 245;
+    --secondary-foreground: 0.17 0.01 265;
+    /* Accent */
+    --accent: 0.93 0.015 245;
+    --accent-foreground: 0.17 0.01 265;
+    /* Destructive */
+    --destructive: 0.55 0.22 27;
+    --destructive-foreground: 0.99 0 0;
+    /* Charts (wheel segment colors) */
+    --chart-1: 0.72 0.17 70; /* amber */
+    --chart-2: 0.58 0.21 27; /* red */
+    --chart-3: 0.65 0.14 185; /* teal */
+    --chart-4: 0.72 0.19 142; /* green */
+    --chart-5: 0.58 0.22 263; /* blue */
+    --sidebar: 0.975 0.005 245;
+    --sidebar-foreground: 0.17 0.01 265;
+    --sidebar-primary: 0.52 0.22 263;
+    --sidebar-primary-foreground: 0.99 0 0;
+    --sidebar-accent: 0.93 0.015 245;
+    --sidebar-accent-foreground: 0.17 0.01 265;
+    --sidebar-border: 0.92 0.01 245;
+    --sidebar-ring: 0.52 0.22 263;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+/* Decorative confetti dots background */
+.confetti-bg {
+  background-image: radial-gradient(
+      circle,
+      oklch(0.72 0.17 70 / 0.25) 2px,
+      transparent 2px
+    ), radial-gradient(circle, oklch(0.52 0.22 263 / 0.2) 2px, transparent 2px),
+    radial-gradient(circle, oklch(0.65 0.14 185 / 0.2) 2px, transparent 2px),
+    radial-gradient(circle, oklch(0.72 0.19 142 / 0.2) 2px, transparent 2px);
+  background-size: 80px 80px, 120px 120px, 100px 100px, 90px 90px;
+  background-position: 10px 10px, 50px 30px, 20px 60px, 70px 5px;
+}
+
+/* Wheel spin animation */
+@keyframes spin-result {
+  0% {
+    transform: rotate(var(--spin-start));
+  }
+  100% {
+    transform: rotate(var(--spin-end));
+  }
+}
+
+.wheel-spinning {
+  animation: spin-result var(--spin-duration, 4s)
+    cubic-bezier(0.17, 0.67, 0.12, 0.99) forwards;
+}
